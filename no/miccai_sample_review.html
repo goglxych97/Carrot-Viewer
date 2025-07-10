@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>3D Spine Shape Estimation from Single 2D DXA | MICCAI 2024 - Open Access</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="3D Spine Shape Estimation from Single 2D DXA" />
+<meta name="author" content="Bourigault, Emmanuelle and Jamaludin, Amir and Zisserman, Andrew" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Abstract Scoliosis is currently assessed solely on 2D lateral deviations, but recent studies have also revealed the importance of other imaging planes in understanding the deformation of the spine. Consequently, extracting the spinal geometry in 3D would help quantify these spinal deformations and aid diagnosis. In this study, we propose an automated general framework to estimate the {\em 3D }spine shape from {\em 2D} DXA scans. We achieve this by explicitly predicting the sagittal view of the spine from the DXA scan. Using these two orthogonal projections of the spine (coronal in DXA, and sagittal from the prediction), we are able to describe the 3D shape of the spine. The prediction is learnt from over 30k paired images of DXA and MRI scans. We assess the performance of the method on a held out test set, and achieve high accuracy. Our code is available at \href{https://github.com/EmmanuelleB985/DXA_to_3D}{https://github.com/EmmanuelleB985/DXA-to-3D.} Links to Paper and Supplementary Materials Main Paper (Open Access Version): https://papers.miccai.org/miccai-2024/paper/1861_paper.pdf SharedIt Link: https://rdcu.be/dV16Y SpringerLink (DOI): https://doi.org/10.1007/978-3-031-72086-4_1 Supplementary Material: https://papers.miccai.org/miccai-2024/supp/1861_supp.zip Link to the Code Repository https://github.com/EmmanuelleB985/DXA-to-3D Link to the Dataset(s) KBiobank: whole body DXA images (field ID 20158) &amp; Dixon technique MRI (field ID 20201) https://www.ukbiobank.ac.uk/ BibTex @InProceedings{Bou_3D_MICCAI2024, Â  Â  Â  Â  author = { Bourigault, Emmanuelle and Jamaludin, Amir and Zisserman, Andrew}, Â  Â  Â  Â  title = { { 3D Spine Shape Estimation from Single 2D DXA } }, Â  Â  Â  Â  booktitle = {proceedings of Medical Image Computing and Computer Assisted Intervention -- MICCAI 2024}, Â  Â  Â  Â  year = {2024}, publisher = {Springer Nature Switzerland}, Â  Â  Â  Â  volume = {LNCS 15005}, Â  Â  Â  Â  month = {October}, Â  Â  Â  Â page = {3 -- 13} } Reviews Review #1 Please describe the contribution of the paper The authors proposed an automated framework to estimate the 3D spine shape from 2D DXA scans. This was achieved by explicitly predicting the sagittal view of the spine from the DXA scan. Using the coronal and sagittal projections of the spine, the authors were able to describe the 3D shape of the spine. The prediction was learnt from over 30k paired images of DXA and MRI scans. Please list the main strengths of the paper; you should write about a novel formulation, an original way to use data, demonstration of clinical feasibility, a novel application, a particularly strong evaluation, or anything else that is a strong aspect of this work. Please provide details, for instance, if a method is novel, explain what aspect is novel and why this is interesting. 1) The paper was straight-forward. It presented the problem statement as well as the solutions in an easy to understand manner; 2) The application itself seemed relatively novel. There were not a lot of works trying to predict 3D spine shapes from 2D DXA scans; Please list the main weaknesses of the paper. Please provide details, for instance, if you think a method is not novel, explain why and provide a reference to prior work. 1) I am not sure I understood the clinical significance of this work. While it is obvious that 3D images contain more information compared to 2D projections, it is not clear that having detailed 3D information really adds value to the management/treatment of scoliosis patients; 2) In my opinion, the authors should have conducted more experiments in order to prove that the proposed framework was indeed the optimal design. For example, for each view, why 3 curves were used instead of just one curve (the centerline of the spine)? Why was the specific network architecture chosen? How necessary was the dual alignment process? 3) In the paper, there were a few places where the coronal and sagittal regressions were discussed as if they were 2 different models. But in other places I was under the impression there was only one network and coronal and sagittal regressions were learned together. The authors should perhaps edit the manuscript for better clarity. Please rate the clarity and organization of this paper Satisfactory Please comment on the reproducibility of the paper. Please be aware that providing code and data is a plus, but not a requirement for acceptance. The submission does not mention open access to source code or data but provides a clear and detailed description of the algorithm to ensure reproducibility. Do you have any additional comments regarding the paperâs reproducibility? My biggest confusion around the algorithm was whether coronal and sagittal regressions were learned together or separately. If this was cleared up, I think the algorithm would be reproducible for the most part. Please provide detailed and constructive comments for the authors. Please also refer to our Reviewerâs guide on what makes a good review. Pay specific attention to the different assessment criteria for the different paper categories (MIC, CAI, Clinical Translation of Methodology, Health Equity): https://conferences.miccai.org/2024/en/REVIEWER-GUIDELINES.html I would suggest the authors work on the following aspects in order to strengthen their paper: 1) Provide more details to justify their algorithm would be valuable clinically. Currently only a few sentences were given in the introduction to describe how 3D spine shapes contained more information than 2D projections. While this was true, it felt like a generic statement and I would suggest having a clinician review and edit this part of the paper to add more clinical significance; 2) Clarify the coronal and sagittal regression training process (see above comments); 3) Provide more experimental evidence that the proposed algorithm was indeed better than other potential networks/frameworks; 4) Provide more literature review for comparison purpose. Currently it is hard to compare this paper to other similar works because not enough literature comparison was provided. If this work was truly unique and nothing similar had been done before, the authors should make this point clear to the readers. Rate the paper on a scale of 1-6, 6 being the strongest (6-4: accept; 3-1: reject). Please use the entire range of the distribution. Spreading the score helps create a distribution for decision-making Reject â should be rejected, independent of rebuttal (2) Please justify your recommendation. What were the major factors that led you to your overall score for this paper? 1) I donât see enough clinical significance. The authors needed to have stronger evidence that this algorithm would actually benefit patient care; 2) The algorithm itself also did not seem to contain enough novelty; Reviewer confidence Very confident (4) [Post rebuttal] After reading the authorâs rebuttal, state your overall opinion of the paper if it has been changed Weak Accept â could be accepted, dependent on rebuttal (4) [Post rebuttal] Please justify your decision The authorsâ answers to my previous concerns were satisfactory for the most part. Although I am still concerned about the clinical usefulness of the paper, I am ok with accepting the paper given the other merits. Review #2 Please describe the contribution of the paper The paper introduces a method for spine curve regression from whole-body DEXA scans. Particular focus of this study is on regressing the curve in the complementary (sagittal) projection. For that, the method employs approximately paired MRI scans to derive the reference spine curves, and predicts them using deep learning-based model. Several models are analyzed - CNN, Transformer, and a hybrid one. The performance is quantified and compared to DEXA-to-DEXA and DEXA-to-corMRI settings. The results may inform future studies on clinical applicability of 2D projection-based DEXA imaging in scoliosis diagnostics. Please list the main strengths of the paper; you should write about a novel formulation, an original way to use data, demonstration of clinical feasibility, a novel application, a particularly strong evaluation, or anything else that is a strong aspect of this work. Please provide details, for instance, if a method is novel, explain what aspect is novel and why this is interesting. Well-writen and well-structured paper that is dense in details. Sufficient overview of the relevant prior art. Novel application of the data, with a potential to expand clinical use of whole-body DEXA scans. Principled and technically sound implementation of the method. Considerable sample size. Please list the main weaknesses of the paper. Please provide details, for instance, if you think a method is not novel, explain why and provide a reference to prior work. The presented method can be seen as an incremental development, considering the prior works on multi-modal scan alignment, single-view spine curve regression, spine segmentation from DEXA/MRI (generally, well-cited). Several of these major components, which are at the core the present study, have been previously published. While the study data is presumably multi-center, robustness of the method when used with external data is not clarified. The paper looks somewhat incomplete, since the accuracy of the predicted curves is not analyzed in 3D (except for the plot in Supplementary). This is unexpected, since this is the exact problem stated by the authors - âscoliosis â¦ is essentially a 3D disorder but typically the focus is on just the 2D lateral shift of the spineâ - and visualized in Figure 1. Please rate the clarity and organization of this paper Very Good Please comment on the reproducibility of the paper. Please be aware that providing code and data is a plus, but not a requirement for acceptance. The submission does not mention open access to source code or data but provides a clear and detailed description of the algorithm to ensure reproducibility. Do you have any additional comments regarding the paperâs reproducibility? Missing details on how the data was standardized - pixel spacing DEXA and MRI, fixed number of slices with spine points along the superoinferior direction. Unclear how the MRI spine masks were projected to obtain the spine curves. The value of lambda term from the loss function is not provided. Unclear how 5 folds from the cross-validation procedure were used. Please provide detailed and constructive comments for the authors. Please also refer to our Reviewerâs guide on what makes a good review. Pay specific attention to the different assessment criteria for the different paper categories (MIC, CAI, Clinical Translation of Methodology, Health Equity): https://conferences.miccai.org/2024/en/REVIEWER-GUIDELINES.html âpaired imaging set of DXA scans with corresponding MRIs taken at roughly the same timeâ. Please, say more specifically what âroughly the same timeâ means. Related Work: âThese methods require a relatively high number of 2D views and camera calibration which is hard to achieve for reconstructing 3D spine in clinics.â. This justification does not sound relevant. First, for the purpose of this study, two somewhat orthogonal DEXA scans would have been sufficient. Second, clinical medical imaging devices are generally very well calibrated and undergo regular maintenance. Please, rething the logic and rephrase. Connected to the above, the paper should briefly say why acquiring two DEXA scans is an unfavourable option. Since both imaging modalities in the study are acquired in lying non-weight-bearing position, this affects how the spine curvature and, thus, scoliosis are observed. Please, briefly discuss the limitations of using non-weight-bearing images and add relevant references. As it currently reads, the metrics in Table 1 are derived in 2D. Measuring them in 3D, following the procedure from Figure 1, would be highly appropriate in the context of this work. Consider summarizing the results from Supplemental Figure 1 plot (lower) numerically and adding them into the main text of the paper. Minor: Figure 5, Supplemental Figure 1 (upper) - Consider cropping the non-informative dark regions in the columns and zooming on the informative areas. Please, state explicitly what are the units for MAE - pixels?. Table 1: Use fixed precision, at least, within each block of the results. Consider adding an angle indicator into every frame of the Supplementary videos. That would allow easier visual comparison of the spines across the modalities. Rate the paper on a scale of 1-6, 6 being the strongest (6-4: accept; 3-1: reject). Please use the entire range of the distribution. Spreading the score helps create a distribution for decision-making Weak Accept â could be accepted, dependent on rebuttal (4) Please justify your recommendation. What were the major factors that led you to your overall score for this paper? Clear, scientifically and technically sound paper Novel use of the data Large sample size Convincing results Rather incremental nature of the study Several small reproducibility issues Experimental section is somewhat incomplete Reviewer confidence Confident but not absolutely certain (3) [Post rebuttal] After reading the authorâs rebuttal, state your overall opinion of the paper if it has been changed Accept â should be accepted, independent of rebuttal (5) [Post rebuttal] Please justify your decision Given the feedback from other reviewers, the novel use of data presented in the study may be more significant than I initially assessed. Additionally, the authors have promised to present the 3D performance indicators, as well as to address my minor remarks. Review #3 Please describe the contribution of the paper In this paper, the authors propose a deep learning method for the modeling of 3D spine shapes by exploiting the 2D DXA images. The estimation is done by performing regression to predict the sagittal view and combining it with the coronal view. The estimation of the 3D shape from the 2D image is a very interesting topic. Additional details on the reasons behind the modelâs ability to predict this view from the 2D image would enhance the presentation. However, both quantitative and qualitative results concerning the prediction of the spine curves have been presented adequately. Please list the main strengths of the paper; you should write about a novel formulation, an original way to use data, demonstration of clinical feasibility, a novel application, a particularly strong evaluation, or anything else that is a strong aspect of this work. Please provide details, for instance, if a method is novel, explain what aspect is novel and why this is interesting. The proposed method can effectively calculate the points required for the views of the spine. Both qualitative and quantitative results are presented to support the methodâs validation. Potential usage for supporting scoliosis screening and quantification. Please list the main weaknesses of the paper. Please provide details, for instance, if you think a method is not novel, explain why and provide a reference to prior work. The part of the methodology concerning image alignment is not adequately described as it is mentioned in the Comments section. The Discussion section is limited. The reasons behind the modelâs ability to reconstruct a 3D model from a 2D image where the depth is not represented could be elaborated. Please rate the clarity and organization of this paper Very Good Please comment on the reproducibility of the paper. Please be aware that providing code and data is a plus, but not a requirement for acceptance. The submission does not provide sufficient information for reproducibility. Do you have any additional comments regarding the paperâs reproducibility? Adding information about the alignment steps would enhance reproducibility. Please provide detailed and constructive comments for the authors. Please also refer to our Reviewerâs guide on what makes a good review. Pay specific attention to the different assessment criteria for the different paper categories (MIC, CAI, Clinical Translation of Methodology, Health Equity): https://conferences.miccai.org/2024/en/REVIEWER-GUIDELINES.html The authors should provide additional related works on the reconstruction of the 3D spine from the 2D DXA such as: M. LÃ³pez Picazo et al., â3-D Subject-Specific Shape and Density Estimation of the Lumbar Spine From a Single Anteroposterior DXA Image Including Assessment of Cortical and Trabecular Bone,â in IEEE Transactions on Medical Imaging, vol. 37, no. 12, pp. 2651-2662, Dec. 2018, doi: 10.1109/TMI.2018.2845909. B. Aubert, C. Vazquez, T. Cresson, S. Parent and J. A. de Guise, âToward Automated 3D Spine Reconstruction from Biplanar Radiographs Using CNN for Statistical Spine Model Fitting,â in IEEE Transactions on Medical Imaging, vol. 38, no. 12, pp. 2796-2806, Dec. 2019, doi: 10.1109/TMI.2019.2914400. In the alignment part of the methodology, the authors mentioned two techniques, a rough and a finer step. Providing additional details apart from the citation would make the description of the overall method clearer. In this regard, the alignment steps should be described more concisely including the two steps which both use translation-rotation transforms. The reasons behind the usage of two alignments with the same types of transforms should be explained. Please enhance the discussion section. Additional clarifications about the modelâs mechanism that achieves this reconstruction would give more insight into the modelâs ability to learn to reconstruct real 3D shapes against using spurious correlations and producing similar/or limited reconstructions. Future work Calculating the correlation between the Cobb angle calculated from the 2D DXA and shape metrics from the 3D reconstructed image would enhance the proposed methodâs application to the clinical workflow for scoliosis screening. Rate the paper on a scale of 1-6, 6 being the strongest (6-4: accept; 3-1: reject). Please use the entire range of the distribution. Spreading the score helps create a distribution for decision-making Weak Accept â could be accepted, dependent on rebuttal (4) Please justify your recommendation. What were the major factors that led you to your overall score for this paper? Reconstructing the 3D spine from the 2D DXA images is an interesting topic with application to the clinical workflow. The authors utilized a deep learning method based on ResNet and Transformers to predict views and combine them for the 3D shape. Providing some additional details to give us more insight into the modelâs mechanism could be of additive value for the modelâs applicability and strengths. Reviewer confidence Confident but not absolutely certain (3) [Post rebuttal] After reading the authorâs rebuttal, state your overall opinion of the paper if it has been changed Accept â should be accepted, independent of rebuttal (5) [Post rebuttal] Please justify your decision Pros -Overall, well-written with good organizational structure. -The clinical application of reconstructing the 3D spine from the 2D DXA images is less studied and could be an interesting topic. -The authors agreed to add related works to enhance literature report. -A large dataset is used for the experiments Cons Limited description of the alignment procedure that can affect reproducibility. Author Feedback We thank the reviewers for their valuable comments, time and effort. We thank them for recognising the convincing results at a large scale and the novel use of the data. R1-W1: âClinical significance - Does detailed 3D information really add value to the management/treatment of scoliosis patients?â The analysis of spine in 3D is relatively new but the introduction of EOS scanners has shown that 3D is valuable for clinical management of patients. Crucially only in 3D, the effect of brace surgical treatment can be better evaluated [1] which impacts a patientâs overall response to treatment. R1-W2a: âMore experiments in order to prove that the proposed framework was indeed the optimal designâ. We explored several architectures and found that a lightweight transformer with ResNet backbone gave the best pixel-wise regression performance (Table 1). We will include a discussion of the models investigated in the final version. In line with our work, [2] showed that a lightweight transformer model using significantly less parameters also surpasses CNN-based and Vision Transformer (ViT) models on the Synapse dataset, SegPC, and ISIC 2017 dataset. R1-W2b: âWhy 3 curves used instead of just one?â. We employ this design choice to predict spine masks. This is important as scoliosis is known to involve deformities due to vertebral axial rotation [3]. This will enable future work into understanding the effect of compression in scoliosis and potentially lead to tailored physiotherapeutic treatment. R1-W3: âAre coronal and sagittal regressions learned together or separately?â There is a single model, with two separate heads: a coronal and a sagittal head that produce 3 curves each. We agree that showing regression curves results in Table 1 separately for the coronal and sagittal plane could give a misleading impression. We will edit the paper to rectify this. R3-W1: âIncremental nature of the workâ. As far as we know, we are the first to regress 3D patient-specific spine shapes from 2D AP DXA. The main technical advance lies in the 2 separate orthogonal planes (sagittal and coronal) curve regression of the spine from a 2D image. We then show through these curves, we can recover 3D geometry of the spine which is beneficial for scoliosis. R3-W2: âRobustness of the method when used with external data is not clarifiedâ. Unfortunately, we do not have access to an external paired dataset of whole-body MRI and DXA scans. From experience, little to no adaptation would be needed in terms of data pre-processing. We will make our code publicly available with documentation to test on external data. R3-W3: âThe paper looks somewhat incomplete, since the accuracy of the predicted curves is not analyzed in 3D (except for the plot in Supplementary).â This would be a good addition. We have labels for 3D spine masks on the MRI, and will add the 3D evaluation to the final version of the paper. R4:âLiterature comparisonâ. We will cite the two papers. Note, however, that we use direct regression while the references fit 3D shape models. R1&amp;R4 :âDual Alignmentâ. This two-stage alignment procedure is crucial, as a significant proportion of the MRI and DXA do not have spines aligned after the first global alignment stage. Note, alignments often proceed iteratively, even under the same transformation. The rough stage is the global alignment of MRI to DXA, and the second finer stage is the MRI spine to DXA spine alignment using spine-labels, this is explained in the last 2 paragraphs of section 2.2. We will address all the minor points listed in the reviews in the final version. [1]. Courvoisier et al. EOS 3D Imaging: assessing the impact of brace treatment in adolescent idiopathic scoliosis. Expert Review of Medical Devices, 11(1), 2014. [2] Heidari et al. Hiformer: Hierarchical multi-scale representations using transformers for medical image segmentation. WACV, 2023. [3] IllÃ©s et al. The third dimension of scoliosis: The forgotten axial plane.OTSR, 2019. Meta-Review Meta-review #1 After you have reviewed the rebuttal and updated reviews, please provide your recommendation based on all reviews and the authorsâ rebuttal. Accept Please justify your recommendation. You may optionally write justifications for âacceptsâ, but are expected to write a justification for ârejectsâ N/A What is the rank of this paper among all your rebuttal papers? Use a number between 1/n (best paper in your stack) and n/n (worst paper in your stack of n papers). If this paper is among the bottom 30% of your stack, feel free to use NR (not ranked). N/A Meta-review #2 After you have reviewed the rebuttal and updated reviews, please provide your recommendation based on all reviews and the authorsâ rebuttal. Accept Please justify your recommendation. You may optionally write justifications for âacceptsâ, but are expected to write a justification for ârejectsâ N/A What is the rank of this paper among all your rebuttal papers? Use a number between 1/n (best paper in your stack) and n/n (worst paper in your stack of n papers). If this paper is among the bottom 30% of your stack, feel free to use NR (not ranked). N/A back to top" />
+<meta property="og:description" content="Abstract Scoliosis is currently assessed solely on 2D lateral deviations, but recent studies have also revealed the importance of other imaging planes in understanding the deformation of the spine. Consequently, extracting the spinal geometry in 3D would help quantify these spinal deformations and aid diagnosis. In this study, we propose an automated general framework to estimate the {\em 3D }spine shape from {\em 2D} DXA scans. We achieve this by explicitly predicting the sagittal view of the spine from the DXA scan. Using these two orthogonal projections of the spine (coronal in DXA, and sagittal from the prediction), we are able to describe the 3D shape of the spine. The prediction is learnt from over 30k paired images of DXA and MRI scans. We assess the performance of the method on a held out test set, and achieve high accuracy. Our code is available at \href{https://github.com/EmmanuelleB985/DXA_to_3D}{https://github.com/EmmanuelleB985/DXA-to-3D.} Links to Paper and Supplementary Materials Main Paper (Open Access Version): https://papers.miccai.org/miccai-2024/paper/1861_paper.pdf SharedIt Link: https://rdcu.be/dV16Y SpringerLink (DOI): https://doi.org/10.1007/978-3-031-72086-4_1 Supplementary Material: https://papers.miccai.org/miccai-2024/supp/1861_supp.zip Link to the Code Repository https://github.com/EmmanuelleB985/DXA-to-3D Link to the Dataset(s) KBiobank: whole body DXA images (field ID 20158) &amp; Dixon technique MRI (field ID 20201) https://www.ukbiobank.ac.uk/ BibTex @InProceedings{Bou_3D_MICCAI2024, Â  Â  Â  Â  author = { Bourigault, Emmanuelle and Jamaludin, Amir and Zisserman, Andrew}, Â  Â  Â  Â  title = { { 3D Spine Shape Estimation from Single 2D DXA } }, Â  Â  Â  Â  booktitle = {proceedings of Medical Image Computing and Computer Assisted Intervention -- MICCAI 2024}, Â  Â  Â  Â  year = {2024}, publisher = {Springer Nature Switzerland}, Â  Â  Â  Â  volume = {LNCS 15005}, Â  Â  Â  Â  month = {October}, Â  Â  Â  Â page = {3 -- 13} } Reviews Review #1 Please describe the contribution of the paper The authors proposed an automated framework to estimate the 3D spine shape from 2D DXA scans. This was achieved by explicitly predicting the sagittal view of the spine from the DXA scan. Using the coronal and sagittal projections of the spine, the authors were able to describe the 3D shape of the spine. The prediction was learnt from over 30k paired images of DXA and MRI scans. Please list the main strengths of the paper; you should write about a novel formulation, an original way to use data, demonstration of clinical feasibility, a novel application, a particularly strong evaluation, or anything else that is a strong aspect of this work. Please provide details, for instance, if a method is novel, explain what aspect is novel and why this is interesting. 1) The paper was straight-forward. It presented the problem statement as well as the solutions in an easy to understand manner; 2) The application itself seemed relatively novel. There were not a lot of works trying to predict 3D spine shapes from 2D DXA scans; Please list the main weaknesses of the paper. Please provide details, for instance, if you think a method is not novel, explain why and provide a reference to prior work. 1) I am not sure I understood the clinical significance of this work. While it is obvious that 3D images contain more information compared to 2D projections, it is not clear that having detailed 3D information really adds value to the management/treatment of scoliosis patients; 2) In my opinion, the authors should have conducted more experiments in order to prove that the proposed framework was indeed the optimal design. For example, for each view, why 3 curves were used instead of just one curve (the centerline of the spine)? Why was the specific network architecture chosen? How necessary was the dual alignment process? 3) In the paper, there were a few places where the coronal and sagittal regressions were discussed as if they were 2 different models. But in other places I was under the impression there was only one network and coronal and sagittal regressions were learned together. The authors should perhaps edit the manuscript for better clarity. Please rate the clarity and organization of this paper Satisfactory Please comment on the reproducibility of the paper. Please be aware that providing code and data is a plus, but not a requirement for acceptance. The submission does not mention open access to source code or data but provides a clear and detailed description of the algorithm to ensure reproducibility. Do you have any additional comments regarding the paperâs reproducibility? My biggest confusion around the algorithm was whether coronal and sagittal regressions were learned together or separately. If this was cleared up, I think the algorithm would be reproducible for the most part. Please provide detailed and constructive comments for the authors. Please also refer to our Reviewerâs guide on what makes a good review. Pay specific attention to the different assessment criteria for the different paper categories (MIC, CAI, Clinical Translation of Methodology, Health Equity): https://conferences.miccai.org/2024/en/REVIEWER-GUIDELINES.html I would suggest the authors work on the following aspects in order to strengthen their paper: 1) Provide more details to justify their algorithm would be valuable clinically. Currently only a few sentences were given in the introduction to describe how 3D spine shapes contained more information than 2D projections. While this was true, it felt like a generic statement and I would suggest having a clinician review and edit this part of the paper to add more clinical significance; 2) Clarify the coronal and sagittal regression training process (see above comments); 3) Provide more experimental evidence that the proposed algorithm was indeed better than other potential networks/frameworks; 4) Provide more literature review for comparison purpose. Currently it is hard to compare this paper to other similar works because not enough literature comparison was provided. If this work was truly unique and nothing similar had been done before, the authors should make this point clear to the readers. Rate the paper on a scale of 1-6, 6 being the strongest (6-4: accept; 3-1: reject). Please use the entire range of the distribution. Spreading the score helps create a distribution for decision-making Reject â should be rejected, independent of rebuttal (2) Please justify your recommendation. What were the major factors that led you to your overall score for this paper? 1) I donât see enough clinical significance. The authors needed to have stronger evidence that this algorithm would actually benefit patient care; 2) The algorithm itself also did not seem to contain enough novelty; Reviewer confidence Very confident (4) [Post rebuttal] After reading the authorâs rebuttal, state your overall opinion of the paper if it has been changed Weak Accept â could be accepted, dependent on rebuttal (4) [Post rebuttal] Please justify your decision The authorsâ answers to my previous concerns were satisfactory for the most part. Although I am still concerned about the clinical usefulness of the paper, I am ok with accepting the paper given the other merits. Review #2 Please describe the contribution of the paper The paper introduces a method for spine curve regression from whole-body DEXA scans. Particular focus of this study is on regressing the curve in the complementary (sagittal) projection. For that, the method employs approximately paired MRI scans to derive the reference spine curves, and predicts them using deep learning-based model. Several models are analyzed - CNN, Transformer, and a hybrid one. The performance is quantified and compared to DEXA-to-DEXA and DEXA-to-corMRI settings. The results may inform future studies on clinical applicability of 2D projection-based DEXA imaging in scoliosis diagnostics. Please list the main strengths of the paper; you should write about a novel formulation, an original way to use data, demonstration of clinical feasibility, a novel application, a particularly strong evaluation, or anything else that is a strong aspect of this work. Please provide details, for instance, if a method is novel, explain what aspect is novel and why this is interesting. Well-writen and well-structured paper that is dense in details. Sufficient overview of the relevant prior art. Novel application of the data, with a potential to expand clinical use of whole-body DEXA scans. Principled and technically sound implementation of the method. Considerable sample size. Please list the main weaknesses of the paper. Please provide details, for instance, if you think a method is not novel, explain why and provide a reference to prior work. The presented method can be seen as an incremental development, considering the prior works on multi-modal scan alignment, single-view spine curve regression, spine segmentation from DEXA/MRI (generally, well-cited). Several of these major components, which are at the core the present study, have been previously published. While the study data is presumably multi-center, robustness of the method when used with external data is not clarified. The paper looks somewhat incomplete, since the accuracy of the predicted curves is not analyzed in 3D (except for the plot in Supplementary). This is unexpected, since this is the exact problem stated by the authors - âscoliosis â¦ is essentially a 3D disorder but typically the focus is on just the 2D lateral shift of the spineâ - and visualized in Figure 1. Please rate the clarity and organization of this paper Very Good Please comment on the reproducibility of the paper. Please be aware that providing code and data is a plus, but not a requirement for acceptance. The submission does not mention open access to source code or data but provides a clear and detailed description of the algorithm to ensure reproducibility. Do you have any additional comments regarding the paperâs reproducibility? Missing details on how the data was standardized - pixel spacing DEXA and MRI, fixed number of slices with spine points along the superoinferior direction. Unclear how the MRI spine masks were projected to obtain the spine curves. The value of lambda term from the loss function is not provided. Unclear how 5 folds from the cross-validation procedure were used. Please provide detailed and constructive comments for the authors. Please also refer to our Reviewerâs guide on what makes a good review. Pay specific attention to the different assessment criteria for the different paper categories (MIC, CAI, Clinical Translation of Methodology, Health Equity): https://conferences.miccai.org/2024/en/REVIEWER-GUIDELINES.html âpaired imaging set of DXA scans with corresponding MRIs taken at roughly the same timeâ. Please, say more specifically what âroughly the same timeâ means. Related Work: âThese methods require a relatively high number of 2D views and camera calibration which is hard to achieve for reconstructing 3D spine in clinics.â. This justification does not sound relevant. First, for the purpose of this study, two somewhat orthogonal DEXA scans would have been sufficient. Second, clinical medical imaging devices are generally very well calibrated and undergo regular maintenance. Please, rething the logic and rephrase. Connected to the above, the paper should briefly say why acquiring two DEXA scans is an unfavourable option. Since both imaging modalities in the study are acquired in lying non-weight-bearing position, this affects how the spine curvature and, thus, scoliosis are observed. Please, briefly discuss the limitations of using non-weight-bearing images and add relevant references. As it currently reads, the metrics in Table 1 are derived in 2D. Measuring them in 3D, following the procedure from Figure 1, would be highly appropriate in the context of this work. Consider summarizing the results from Supplemental Figure 1 plot (lower) numerically and adding them into the main text of the paper. Minor: Figure 5, Supplemental Figure 1 (upper) - Consider cropping the non-informative dark regions in the columns and zooming on the informative areas. Please, state explicitly what are the units for MAE - pixels?. Table 1: Use fixed precision, at least, within each block of the results. Consider adding an angle indicator into every frame of the Supplementary videos. That would allow easier visual comparison of the spines across the modalities. Rate the paper on a scale of 1-6, 6 being the strongest (6-4: accept; 3-1: reject). Please use the entire range of the distribution. Spreading the score helps create a distribution for decision-making Weak Accept â could be accepted, dependent on rebuttal (4) Please justify your recommendation. What were the major factors that led you to your overall score for this paper? Clear, scientifically and technically sound paper Novel use of the data Large sample size Convincing results Rather incremental nature of the study Several small reproducibility issues Experimental section is somewhat incomplete Reviewer confidence Confident but not absolutely certain (3) [Post rebuttal] After reading the authorâs rebuttal, state your overall opinion of the paper if it has been changed Accept â should be accepted, independent of rebuttal (5) [Post rebuttal] Please justify your decision Given the feedback from other reviewers, the novel use of data presented in the study may be more significant than I initially assessed. Additionally, the authors have promised to present the 3D performance indicators, as well as to address my minor remarks. Review #3 Please describe the contribution of the paper In this paper, the authors propose a deep learning method for the modeling of 3D spine shapes by exploiting the 2D DXA images. The estimation is done by performing regression to predict the sagittal view and combining it with the coronal view. The estimation of the 3D shape from the 2D image is a very interesting topic. Additional details on the reasons behind the modelâs ability to predict this view from the 2D image would enhance the presentation. However, both quantitative and qualitative results concerning the prediction of the spine curves have been presented adequately. Please list the main strengths of the paper; you should write about a novel formulation, an original way to use data, demonstration of clinical feasibility, a novel application, a particularly strong evaluation, or anything else that is a strong aspect of this work. Please provide details, for instance, if a method is novel, explain what aspect is novel and why this is interesting. The proposed method can effectively calculate the points required for the views of the spine. Both qualitative and quantitative results are presented to support the methodâs validation. Potential usage for supporting scoliosis screening and quantification. Please list the main weaknesses of the paper. Please provide details, for instance, if you think a method is not novel, explain why and provide a reference to prior work. The part of the methodology concerning image alignment is not adequately described as it is mentioned in the Comments section. The Discussion section is limited. The reasons behind the modelâs ability to reconstruct a 3D model from a 2D image where the depth is not represented could be elaborated. Please rate the clarity and organization of this paper Very Good Please comment on the reproducibility of the paper. Please be aware that providing code and data is a plus, but not a requirement for acceptance. The submission does not provide sufficient information for reproducibility. Do you have any additional comments regarding the paperâs reproducibility? Adding information about the alignment steps would enhance reproducibility. Please provide detailed and constructive comments for the authors. Please also refer to our Reviewerâs guide on what makes a good review. Pay specific attention to the different assessment criteria for the different paper categories (MIC, CAI, Clinical Translation of Methodology, Health Equity): https://conferences.miccai.org/2024/en/REVIEWER-GUIDELINES.html The authors should provide additional related works on the reconstruction of the 3D spine from the 2D DXA such as: M. LÃ³pez Picazo et al., â3-D Subject-Specific Shape and Density Estimation of the Lumbar Spine From a Single Anteroposterior DXA Image Including Assessment of Cortical and Trabecular Bone,â in IEEE Transactions on Medical Imaging, vol. 37, no. 12, pp. 2651-2662, Dec. 2018, doi: 10.1109/TMI.2018.2845909. B. Aubert, C. Vazquez, T. Cresson, S. Parent and J. A. de Guise, âToward Automated 3D Spine Reconstruction from Biplanar Radiographs Using CNN for Statistical Spine Model Fitting,â in IEEE Transactions on Medical Imaging, vol. 38, no. 12, pp. 2796-2806, Dec. 2019, doi: 10.1109/TMI.2019.2914400. In the alignment part of the methodology, the authors mentioned two techniques, a rough and a finer step. Providing additional details apart from the citation would make the description of the overall method clearer. In this regard, the alignment steps should be described more concisely including the two steps which both use translation-rotation transforms. The reasons behind the usage of two alignments with the same types of transforms should be explained. Please enhance the discussion section. Additional clarifications about the modelâs mechanism that achieves this reconstruction would give more insight into the modelâs ability to learn to reconstruct real 3D shapes against using spurious correlations and producing similar/or limited reconstructions. Future work Calculating the correlation between the Cobb angle calculated from the 2D DXA and shape metrics from the 3D reconstructed image would enhance the proposed methodâs application to the clinical workflow for scoliosis screening. Rate the paper on a scale of 1-6, 6 being the strongest (6-4: accept; 3-1: reject). Please use the entire range of the distribution. Spreading the score helps create a distribution for decision-making Weak Accept â could be accepted, dependent on rebuttal (4) Please justify your recommendation. What were the major factors that led you to your overall score for this paper? Reconstructing the 3D spine from the 2D DXA images is an interesting topic with application to the clinical workflow. The authors utilized a deep learning method based on ResNet and Transformers to predict views and combine them for the 3D shape. Providing some additional details to give us more insight into the modelâs mechanism could be of additive value for the modelâs applicability and strengths. Reviewer confidence Confident but not absolutely certain (3) [Post rebuttal] After reading the authorâs rebuttal, state your overall opinion of the paper if it has been changed Accept â should be accepted, independent of rebuttal (5) [Post rebuttal] Please justify your decision Pros -Overall, well-written with good organizational structure. -The clinical application of reconstructing the 3D spine from the 2D DXA images is less studied and could be an interesting topic. -The authors agreed to add related works to enhance literature report. -A large dataset is used for the experiments Cons Limited description of the alignment procedure that can affect reproducibility. Author Feedback We thank the reviewers for their valuable comments, time and effort. We thank them for recognising the convincing results at a large scale and the novel use of the data. R1-W1: âClinical significance - Does detailed 3D information really add value to the management/treatment of scoliosis patients?â The analysis of spine in 3D is relatively new but the introduction of EOS scanners has shown that 3D is valuable for clinical management of patients. Crucially only in 3D, the effect of brace surgical treatment can be better evaluated [1] which impacts a patientâs overall response to treatment. R1-W2a: âMore experiments in order to prove that the proposed framework was indeed the optimal designâ. We explored several architectures and found that a lightweight transformer with ResNet backbone gave the best pixel-wise regression performance (Table 1). We will include a discussion of the models investigated in the final version. In line with our work, [2] showed that a lightweight transformer model using significantly less parameters also surpasses CNN-based and Vision Transformer (ViT) models on the Synapse dataset, SegPC, and ISIC 2017 dataset. R1-W2b: âWhy 3 curves used instead of just one?â. We employ this design choice to predict spine masks. This is important as scoliosis is known to involve deformities due to vertebral axial rotation [3]. This will enable future work into understanding the effect of compression in scoliosis and potentially lead to tailored physiotherapeutic treatment. R1-W3: âAre coronal and sagittal regressions learned together or separately?â There is a single model, with two separate heads: a coronal and a sagittal head that produce 3 curves each. We agree that showing regression curves results in Table 1 separately for the coronal and sagittal plane could give a misleading impression. We will edit the paper to rectify this. R3-W1: âIncremental nature of the workâ. As far as we know, we are the first to regress 3D patient-specific spine shapes from 2D AP DXA. The main technical advance lies in the 2 separate orthogonal planes (sagittal and coronal) curve regression of the spine from a 2D image. We then show through these curves, we can recover 3D geometry of the spine which is beneficial for scoliosis. R3-W2: âRobustness of the method when used with external data is not clarifiedâ. Unfortunately, we do not have access to an external paired dataset of whole-body MRI and DXA scans. From experience, little to no adaptation would be needed in terms of data pre-processing. We will make our code publicly available with documentation to test on external data. R3-W3: âThe paper looks somewhat incomplete, since the accuracy of the predicted curves is not analyzed in 3D (except for the plot in Supplementary).â This would be a good addition. We have labels for 3D spine masks on the MRI, and will add the 3D evaluation to the final version of the paper. R4:âLiterature comparisonâ. We will cite the two papers. Note, however, that we use direct regression while the references fit 3D shape models. R1&amp;R4 :âDual Alignmentâ. This two-stage alignment procedure is crucial, as a significant proportion of the MRI and DXA do not have spines aligned after the first global alignment stage. Note, alignments often proceed iteratively, even under the same transformation. The rough stage is the global alignment of MRI to DXA, and the second finer stage is the MRI spine to DXA spine alignment using spine-labels, this is explained in the last 2 paragraphs of section 2.2. We will address all the minor points listed in the reviews in the final version. [1]. Courvoisier et al. EOS 3D Imaging: assessing the impact of brace treatment in adolescent idiopathic scoliosis. Expert Review of Medical Devices, 11(1), 2014. [2] Heidari et al. Hiformer: Hierarchical multi-scale representations using transformers for medical image segmentation. WACV, 2023. [3] IllÃ©s et al. The third dimension of scoliosis: The forgotten axial plane.OTSR, 2019. Meta-Review Meta-review #1 After you have reviewed the rebuttal and updated reviews, please provide your recommendation based on all reviews and the authorsâ rebuttal. Accept Please justify your recommendation. You may optionally write justifications for âacceptsâ, but are expected to write a justification for ârejectsâ N/A What is the rank of this paper among all your rebuttal papers? Use a number between 1/n (best paper in your stack) and n/n (worst paper in your stack of n papers). If this paper is among the bottom 30% of your stack, feel free to use NR (not ranked). N/A Meta-review #2 After you have reviewed the rebuttal and updated reviews, please provide your recommendation based on all reviews and the authorsâ rebuttal. Accept Please justify your recommendation. You may optionally write justifications for âacceptsâ, but are expected to write a justification for ârejectsâ N/A What is the rank of this paper among all your rebuttal papers? Use a number between 1/n (best paper in your stack) and n/n (worst paper in your stack of n papers). If this paper is among the bottom 30% of your stack, feel free to use NR (not ranked). N/A back to top" />
+<link rel="canonical" href="https://papers.miccai.org/miccai-2024/001-Paper1861" />
+<meta property="og:url" content="https://papers.miccai.org/miccai-2024/001-Paper1861" />
+<meta property="og:site_name" content="MICCAI 2024 - Open Access" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2024-09-01T00:00:00-04:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="3D Spine Shape Estimation from Single 2D DXA" />
+<script type="application/ld+json">
+{"@type":"BlogPosting","headline":"3D Spine Shape Estimation from Single 2D DXA","dateModified":"2024-09-01T00:00:00-04:00","datePublished":"2024-09-01T00:00:00-04:00","url":"https://papers.miccai.org/miccai-2024/001-Paper1861","mainEntityOfPage":{"@type":"WebPage","@id":"https://papers.miccai.org/miccai-2024/001-Paper1861"},"author":{"@type":"Person","name":"Bourigault, Emmanuelle and Jamaludin, Amir and Zisserman, Andrew"},"description":"Abstract Scoliosis is currently assessed solely on 2D lateral deviations, but recent studies have also revealed the importance of other imaging planes in understanding the deformation of the spine. Consequently, extracting the spinal geometry in 3D would help quantify these spinal deformations and aid diagnosis. In this study, we propose an automated general framework to estimate the {\\em 3D }spine shape from {\\em 2D} DXA scans. We achieve this by explicitly predicting the sagittal view of the spine from the DXA scan. Using these two orthogonal projections of the spine (coronal in DXA, and sagittal from the prediction), we are able to describe the 3D shape of the spine. The prediction is learnt from over 30k paired images of DXA and MRI scans. We assess the performance of the method on a held out test set, and achieve high accuracy. Our code is available at \\href{https://github.com/EmmanuelleB985/DXA_to_3D}{https://github.com/EmmanuelleB985/DXA-to-3D.} Links to Paper and Supplementary Materials Main Paper (Open Access Version): https://papers.miccai.org/miccai-2024/paper/1861_paper.pdf SharedIt Link: https://rdcu.be/dV16Y SpringerLink (DOI): https://doi.org/10.1007/978-3-031-72086-4_1 Supplementary Material: https://papers.miccai.org/miccai-2024/supp/1861_supp.zip Link to the Code Repository https://github.com/EmmanuelleB985/DXA-to-3D Link to the Dataset(s) KBiobank: whole body DXA images (field ID 20158) &amp; Dixon technique MRI (field ID 20201) https://www.ukbiobank.ac.uk/ BibTex @InProceedings{Bou_3D_MICCAI2024, Â  Â  Â  Â  author = { Bourigault, Emmanuelle and Jamaludin, Amir and Zisserman, Andrew}, Â  Â  Â  Â  title = { { 3D Spine Shape Estimation from Single 2D DXA } }, Â  Â  Â  Â  booktitle = {proceedings of Medical Image Computing and Computer Assisted Intervention -- MICCAI 2024}, Â  Â  Â  Â  year = {2024}, publisher = {Springer Nature Switzerland}, Â  Â  Â  Â  volume = {LNCS 15005}, Â  Â  Â  Â  month = {October}, Â  Â  Â  Â page = {3 -- 13} } Reviews Review #1 Please describe the contribution of the paper The authors proposed an automated framework to estimate the 3D spine shape from 2D DXA scans. This was achieved by explicitly predicting the sagittal view of the spine from the DXA scan. Using the coronal and sagittal projections of the spine, the authors were able to describe the 3D shape of the spine. The prediction was learnt from over 30k paired images of DXA and MRI scans. Please list the main strengths of the paper; you should write about a novel formulation, an original way to use data, demonstration of clinical feasibility, a novel application, a particularly strong evaluation, or anything else that is a strong aspect of this work. Please provide details, for instance, if a method is novel, explain what aspect is novel and why this is interesting. 1) The paper was straight-forward. It presented the problem statement as well as the solutions in an easy to understand manner; 2) The application itself seemed relatively novel. There were not a lot of works trying to predict 3D spine shapes from 2D DXA scans; Please list the main weaknesses of the paper. Please provide details, for instance, if you think a method is not novel, explain why and provide a reference to prior work. 1) I am not sure I understood the clinical significance of this work. While it is obvious that 3D images contain more information compared to 2D projections, it is not clear that having detailed 3D information really adds value to the management/treatment of scoliosis patients; 2) In my opinion, the authors should have conducted more experiments in order to prove that the proposed framework was indeed the optimal design. For example, for each view, why 3 curves were used instead of just one curve (the centerline of the spine)? Why was the specific network architecture chosen? How necessary was the dual alignment process? 3) In the paper, there were a few places where the coronal and sagittal regressions were discussed as if they were 2 different models. But in other places I was under the impression there was only one network and coronal and sagittal regressions were learned together. The authors should perhaps edit the manuscript for better clarity. Please rate the clarity and organization of this paper Satisfactory Please comment on the reproducibility of the paper. Please be aware that providing code and data is a plus, but not a requirement for acceptance. The submission does not mention open access to source code or data but provides a clear and detailed description of the algorithm to ensure reproducibility. Do you have any additional comments regarding the paperâs reproducibility? My biggest confusion around the algorithm was whether coronal and sagittal regressions were learned together or separately. If this was cleared up, I think the algorithm would be reproducible for the most part. Please provide detailed and constructive comments for the authors. Please also refer to our Reviewerâs guide on what makes a good review. Pay specific attention to the different assessment criteria for the different paper categories (MIC, CAI, Clinical Translation of Methodology, Health Equity): https://conferences.miccai.org/2024/en/REVIEWER-GUIDELINES.html I would suggest the authors work on the following aspects in order to strengthen their paper: 1) Provide more details to justify their algorithm would be valuable clinically. Currently only a few sentences were given in the introduction to describe how 3D spine shapes contained more information than 2D projections. While this was true, it felt like a generic statement and I would suggest having a clinician review and edit this part of the paper to add more clinical significance; 2) Clarify the coronal and sagittal regression training process (see above comments); 3) Provide more experimental evidence that the proposed algorithm was indeed better than other potential networks/frameworks; 4) Provide more literature review for comparison purpose. Currently it is hard to compare this paper to other similar works because not enough literature comparison was provided. If this work was truly unique and nothing similar had been done before, the authors should make this point clear to the readers. Rate the paper on a scale of 1-6, 6 being the strongest (6-4: accept; 3-1: reject). Please use the entire range of the distribution. Spreading the score helps create a distribution for decision-making Reject â should be rejected, independent of rebuttal (2) Please justify your recommendation. What were the major factors that led you to your overall score for this paper? 1) I donât see enough clinical significance. The authors needed to have stronger evidence that this algorithm would actually benefit patient care; 2) The algorithm itself also did not seem to contain enough novelty; Reviewer confidence Very confident (4) [Post rebuttal] After reading the authorâs rebuttal, state your overall opinion of the paper if it has been changed Weak Accept â could be accepted, dependent on rebuttal (4) [Post rebuttal] Please justify your decision The authorsâ answers to my previous concerns were satisfactory for the most part. Although I am still concerned about the clinical usefulness of the paper, I am ok with accepting the paper given the other merits. Review #2 Please describe the contribution of the paper The paper introduces a method for spine curve regression from whole-body DEXA scans. Particular focus of this study is on regressing the curve in the complementary (sagittal) projection. For that, the method employs approximately paired MRI scans to derive the reference spine curves, and predicts them using deep learning-based model. Several models are analyzed - CNN, Transformer, and a hybrid one. The performance is quantified and compared to DEXA-to-DEXA and DEXA-to-corMRI settings. The results may inform future studies on clinical applicability of 2D projection-based DEXA imaging in scoliosis diagnostics. Please list the main strengths of the paper; you should write about a novel formulation, an original way to use data, demonstration of clinical feasibility, a novel application, a particularly strong evaluation, or anything else that is a strong aspect of this work. Please provide details, for instance, if a method is novel, explain what aspect is novel and why this is interesting. Well-writen and well-structured paper that is dense in details. Sufficient overview of the relevant prior art. Novel application of the data, with a potential to expand clinical use of whole-body DEXA scans. Principled and technically sound implementation of the method. Considerable sample size. Please list the main weaknesses of the paper. Please provide details, for instance, if you think a method is not novel, explain why and provide a reference to prior work. The presented method can be seen as an incremental development, considering the prior works on multi-modal scan alignment, single-view spine curve regression, spine segmentation from DEXA/MRI (generally, well-cited). Several of these major components, which are at the core the present study, have been previously published. While the study data is presumably multi-center, robustness of the method when used with external data is not clarified. The paper looks somewhat incomplete, since the accuracy of the predicted curves is not analyzed in 3D (except for the plot in Supplementary). This is unexpected, since this is the exact problem stated by the authors - âscoliosis â¦ is essentially a 3D disorder but typically the focus is on just the 2D lateral shift of the spineâ - and visualized in Figure 1. Please rate the clarity and organization of this paper Very Good Please comment on the reproducibility of the paper. Please be aware that providing code and data is a plus, but not a requirement for acceptance. The submission does not mention open access to source code or data but provides a clear and detailed description of the algorithm to ensure reproducibility. Do you have any additional comments regarding the paperâs reproducibility? Missing details on how the data was standardized - pixel spacing DEXA and MRI, fixed number of slices with spine points along the superoinferior direction. Unclear how the MRI spine masks were projected to obtain the spine curves. The value of lambda term from the loss function is not provided. Unclear how 5 folds from the cross-validation procedure were used. Please provide detailed and constructive comments for the authors. Please also refer to our Reviewerâs guide on what makes a good review. Pay specific attention to the different assessment criteria for the different paper categories (MIC, CAI, Clinical Translation of Methodology, Health Equity): https://conferences.miccai.org/2024/en/REVIEWER-GUIDELINES.html âpaired imaging set of DXA scans with corresponding MRIs taken at roughly the same timeâ. Please, say more specifically what âroughly the same timeâ means. Related Work: âThese methods require a relatively high number of 2D views and camera calibration which is hard to achieve for reconstructing 3D spine in clinics.â. This justification does not sound relevant. First, for the purpose of this study, two somewhat orthogonal DEXA scans would have been sufficient. Second, clinical medical imaging devices are generally very well calibrated and undergo regular maintenance. Please, rething the logic and rephrase. Connected to the above, the paper should briefly say why acquiring two DEXA scans is an unfavourable option. Since both imaging modalities in the study are acquired in lying non-weight-bearing position, this affects how the spine curvature and, thus, scoliosis are observed. Please, briefly discuss the limitations of using non-weight-bearing images and add relevant references. As it currently reads, the metrics in Table 1 are derived in 2D. Measuring them in 3D, following the procedure from Figure 1, would be highly appropriate in the context of this work. Consider summarizing the results from Supplemental Figure 1 plot (lower) numerically and adding them into the main text of the paper. Minor: Figure 5, Supplemental Figure 1 (upper) - Consider cropping the non-informative dark regions in the columns and zooming on the informative areas. Please, state explicitly what are the units for MAE - pixels?. Table 1: Use fixed precision, at least, within each block of the results. Consider adding an angle indicator into every frame of the Supplementary videos. That would allow easier visual comparison of the spines across the modalities. Rate the paper on a scale of 1-6, 6 being the strongest (6-4: accept; 3-1: reject). Please use the entire range of the distribution. Spreading the score helps create a distribution for decision-making Weak Accept â could be accepted, dependent on rebuttal (4) Please justify your recommendation. What were the major factors that led you to your overall score for this paper? Clear, scientifically and technically sound paper Novel use of the data Large sample size Convincing results Rather incremental nature of the study Several small reproducibility issues Experimental section is somewhat incomplete Reviewer confidence Confident but not absolutely certain (3) [Post rebuttal] After reading the authorâs rebuttal, state your overall opinion of the paper if it has been changed Accept â should be accepted, independent of rebuttal (5) [Post rebuttal] Please justify your decision Given the feedback from other reviewers, the novel use of data presented in the study may be more significant than I initially assessed. Additionally, the authors have promised to present the 3D performance indicators, as well as to address my minor remarks. Review #3 Please describe the contribution of the paper In this paper, the authors propose a deep learning method for the modeling of 3D spine shapes by exploiting the 2D DXA images. The estimation is done by performing regression to predict the sagittal view and combining it with the coronal view. The estimation of the 3D shape from the 2D image is a very interesting topic. Additional details on the reasons behind the modelâs ability to predict this view from the 2D image would enhance the presentation. However, both quantitative and qualitative results concerning the prediction of the spine curves have been presented adequately. Please list the main strengths of the paper; you should write about a novel formulation, an original way to use data, demonstration of clinical feasibility, a novel application, a particularly strong evaluation, or anything else that is a strong aspect of this work. Please provide details, for instance, if a method is novel, explain what aspect is novel and why this is interesting. The proposed method can effectively calculate the points required for the views of the spine. Both qualitative and quantitative results are presented to support the methodâs validation. Potential usage for supporting scoliosis screening and quantification. Please list the main weaknesses of the paper. Please provide details, for instance, if you think a method is not novel, explain why and provide a reference to prior work. The part of the methodology concerning image alignment is not adequately described as it is mentioned in the Comments section. The Discussion section is limited. The reasons behind the modelâs ability to reconstruct a 3D model from a 2D image where the depth is not represented could be elaborated. Please rate the clarity and organization of this paper Very Good Please comment on the reproducibility of the paper. Please be aware that providing code and data is a plus, but not a requirement for acceptance. The submission does not provide sufficient information for reproducibility. Do you have any additional comments regarding the paperâs reproducibility? Adding information about the alignment steps would enhance reproducibility. Please provide detailed and constructive comments for the authors. Please also refer to our Reviewerâs guide on what makes a good review. Pay specific attention to the different assessment criteria for the different paper categories (MIC, CAI, Clinical Translation of Methodology, Health Equity): https://conferences.miccai.org/2024/en/REVIEWER-GUIDELINES.html The authors should provide additional related works on the reconstruction of the 3D spine from the 2D DXA such as: M. LÃ³pez Picazo et al., â3-D Subject-Specific Shape and Density Estimation of the Lumbar Spine From a Single Anteroposterior DXA Image Including Assessment of Cortical and Trabecular Bone,â in IEEE Transactions on Medical Imaging, vol. 37, no. 12, pp. 2651-2662, Dec. 2018, doi: 10.1109/TMI.2018.2845909. B. Aubert, C. Vazquez, T. Cresson, S. Parent and J. A. de Guise, âToward Automated 3D Spine Reconstruction from Biplanar Radiographs Using CNN for Statistical Spine Model Fitting,â in IEEE Transactions on Medical Imaging, vol. 38, no. 12, pp. 2796-2806, Dec. 2019, doi: 10.1109/TMI.2019.2914400. In the alignment part of the methodology, the authors mentioned two techniques, a rough and a finer step. Providing additional details apart from the citation would make the description of the overall method clearer. In this regard, the alignment steps should be described more concisely including the two steps which both use translation-rotation transforms. The reasons behind the usage of two alignments with the same types of transforms should be explained. Please enhance the discussion section. Additional clarifications about the modelâs mechanism that achieves this reconstruction would give more insight into the modelâs ability to learn to reconstruct real 3D shapes against using spurious correlations and producing similar/or limited reconstructions. Future work Calculating the correlation between the Cobb angle calculated from the 2D DXA and shape metrics from the 3D reconstructed image would enhance the proposed methodâs application to the clinical workflow for scoliosis screening. Rate the paper on a scale of 1-6, 6 being the strongest (6-4: accept; 3-1: reject). Please use the entire range of the distribution. Spreading the score helps create a distribution for decision-making Weak Accept â could be accepted, dependent on rebuttal (4) Please justify your recommendation. What were the major factors that led you to your overall score for this paper? Reconstructing the 3D spine from the 2D DXA images is an interesting topic with application to the clinical workflow. The authors utilized a deep learning method based on ResNet and Transformers to predict views and combine them for the 3D shape. Providing some additional details to give us more insight into the modelâs mechanism could be of additive value for the modelâs applicability and strengths. Reviewer confidence Confident but not absolutely certain (3) [Post rebuttal] After reading the authorâs rebuttal, state your overall opinion of the paper if it has been changed Accept â should be accepted, independent of rebuttal (5) [Post rebuttal] Please justify your decision Pros -Overall, well-written with good organizational structure. -The clinical application of reconstructing the 3D spine from the 2D DXA images is less studied and could be an interesting topic. -The authors agreed to add related works to enhance literature report. -A large dataset is used for the experiments Cons Limited description of the alignment procedure that can affect reproducibility. Author Feedback We thank the reviewers for their valuable comments, time and effort. We thank them for recognising the convincing results at a large scale and the novel use of the data. R1-W1: âClinical significance - Does detailed 3D information really add value to the management/treatment of scoliosis patients?â The analysis of spine in 3D is relatively new but the introduction of EOS scanners has shown that 3D is valuable for clinical management of patients. Crucially only in 3D, the effect of brace surgical treatment can be better evaluated [1] which impacts a patientâs overall response to treatment. R1-W2a: âMore experiments in order to prove that the proposed framework was indeed the optimal designâ. We explored several architectures and found that a lightweight transformer with ResNet backbone gave the best pixel-wise regression performance (Table 1). We will include a discussion of the models investigated in the final version. In line with our work, [2] showed that a lightweight transformer model using significantly less parameters also surpasses CNN-based and Vision Transformer (ViT) models on the Synapse dataset, SegPC, and ISIC 2017 dataset. R1-W2b: âWhy 3 curves used instead of just one?â. We employ this design choice to predict spine masks. This is important as scoliosis is known to involve deformities due to vertebral axial rotation [3]. This will enable future work into understanding the effect of compression in scoliosis and potentially lead to tailored physiotherapeutic treatment. R1-W3: âAre coronal and sagittal regressions learned together or separately?â There is a single model, with two separate heads: a coronal and a sagittal head that produce 3 curves each. We agree that showing regression curves results in Table 1 separately for the coronal and sagittal plane could give a misleading impression. We will edit the paper to rectify this. R3-W1: âIncremental nature of the workâ. As far as we know, we are the first to regress 3D patient-specific spine shapes from 2D AP DXA. The main technical advance lies in the 2 separate orthogonal planes (sagittal and coronal) curve regression of the spine from a 2D image. We then show through these curves, we can recover 3D geometry of the spine which is beneficial for scoliosis. R3-W2: âRobustness of the method when used with external data is not clarifiedâ. Unfortunately, we do not have access to an external paired dataset of whole-body MRI and DXA scans. From experience, little to no adaptation would be needed in terms of data pre-processing. We will make our code publicly available with documentation to test on external data. R3-W3: âThe paper looks somewhat incomplete, since the accuracy of the predicted curves is not analyzed in 3D (except for the plot in Supplementary).â This would be a good addition. We have labels for 3D spine masks on the MRI, and will add the 3D evaluation to the final version of the paper. R4:âLiterature comparisonâ. We will cite the two papers. Note, however, that we use direct regression while the references fit 3D shape models. R1&amp;R4 :âDual Alignmentâ. This two-stage alignment procedure is crucial, as a significant proportion of the MRI and DXA do not have spines aligned after the first global alignment stage. Note, alignments often proceed iteratively, even under the same transformation. The rough stage is the global alignment of MRI to DXA, and the second finer stage is the MRI spine to DXA spine alignment using spine-labels, this is explained in the last 2 paragraphs of section 2.2. We will address all the minor points listed in the reviews in the final version. [1]. Courvoisier et al. EOS 3D Imaging: assessing the impact of brace treatment in adolescent idiopathic scoliosis. Expert Review of Medical Devices, 11(1), 2014. [2] Heidari et al. Hiformer: Hierarchical multi-scale representations using transformers for medical image segmentation. WACV, 2023. [3] IllÃ©s et al. The third dimension of scoliosis: The forgotten axial plane.OTSR, 2019. Meta-Review Meta-review #1 After you have reviewed the rebuttal and updated reviews, please provide your recommendation based on all reviews and the authorsâ rebuttal. Accept Please justify your recommendation. You may optionally write justifications for âacceptsâ, but are expected to write a justification for ârejectsâ N/A What is the rank of this paper among all your rebuttal papers? Use a number between 1/n (best paper in your stack) and n/n (worst paper in your stack of n papers). If this paper is among the bottom 30% of your stack, feel free to use NR (not ranked). N/A Meta-review #2 After you have reviewed the rebuttal and updated reviews, please provide your recommendation based on all reviews and the authorsâ rebuttal. Accept Please justify your recommendation. You may optionally write justifications for âacceptsâ, but are expected to write a justification for ârejectsâ N/A What is the rank of this paper among all your rebuttal papers? Use a number between 1/n (best paper in your stack) and n/n (worst paper in your stack of n papers). If this paper is among the bottom 30% of your stack, feel free to use NR (not ranked). N/A back to top","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+<meta
+  name="keywords"
+  content="Bourigault, Emmanuelle,Jamaludin, Amir,Zisserman, Andrew" />
+
+
+<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+
+<link rel="apple-touch-icon" sizes="57x57" href="https://conferences.miccai.org/2024/files/images/favicon/apple-icon-57x57.png"/>
+<link rel="apple-touch-icon" sizes="60x60" href="https://conferences.miccai.org/2024/files/images/favicon/apple-icon-60x60.png"/>
+<link rel="apple-touch-icon" sizes="72x72" href="https://conferences.miccai.org/2024/files/images/favicon/apple-icon-72x72.png"/>
+<link rel="apple-touch-icon" sizes="76x76" href="https://conferences.miccai.org/2024/files/images/favicon/apple-icon-76x76.png"/>
+<link rel="apple-touch-icon" sizes="114x114" href="https://conferences.miccai.org/2024/files/images/favicon/apple-icon-114x114.png"/>
+<link rel="apple-touch-icon" sizes="120x120" href=".https://conferences.miccai.org/2024/files/images/favicon/apple-icon-120x120.png"/>
+<link rel="apple-touch-icon" sizes="144x144" href="https://conferences.miccai.org/2024/files/images/favicon/apple-icon-144x144.png"/>
+<link rel="apple-touch-icon" sizes="152x152" href="https://conferences.miccai.org/2024/files/images/favicon/apple-icon-152x152.png"/>
+<link rel="apple-touch-icon" sizes="180x180" href="https://conferences.miccai.org/2024/files/images/favicon/apple-icon-180x180.png"/>
+<link rel="icon" type="image/png" sizes="192x192"  href="https://conferences.miccai.org/2024/files/images/favicon/android-icon-192x192.png"/>
+<link rel="icon" type="image/png" sizes="32x32" href="https://conferences.miccai.org/2024/files/images/favicon/favicon-32x32.png"/>
+<link rel="icon" type="image/png" sizes="96x96" href="https://conferences.miccai.org/2024/files/images/favicon/favicon-96x96.png"/>
+<link rel="icon" type="image/png" sizes="16x16" href="https://conferences.miccai.org/2024/files/images/favicon/favicon-16x16.png"/>
+
+<link
+  rel="alternate"
+  type="application/rss+xml"
+  title="MICCAI 2024 - Open Access - "
+  href="/miccai-2024/feed.xml" />
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="/miccai-2024/assets/css/base.css" />
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="/miccai-2024/assets/css/highlight.css" />
+
+<!--[if lt IE 9]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async>
+</script>
+
+
+<!-- <script src="/assets/scripts/jekyllpaper.js" async></script> -->
+<script src="/miccai-2024/assets/scripts/jekyllpaper.js" async></script>
+<script
+  src="https://unpkg.com/mermaid@8.5.1/dist/mermaid.min.js"
+  onload="javascript:loadMermaid();"
+  async>
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ["\\(", "\\)"] ],
+      displayMath: [ ['$$', '$$'], ["\\[", "\\]"] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+    //,
+    //displayAlign: "left",
+    //displayIndent: "2em"
+  });
+</script>
+<!--<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script> -->
+
+  </head>
+  <body>
+    <div class="container-wrapper">
+      <header class="container-header">
+        <div class="header-info">
+  <!-- Added by Elvis Chen -->
+  <p style="text-align:center;"><img src="/miccai-2024/assets/images/miccai2024-banner-v2.png" alt="MICCAI banner" width="100%"></p>
+  <br>
+  <!-- END Added by Elvis Chen -->
+  <span class="header-info-name">MICCAI 2024 - Open Access</span>
+  <span class="header-info-desc"></span>
+  <br><br>
+  <span>
+
+<h2><i><font color="green">This page contains the open access versions of the MICCAI 2024 papers, provided by the MICCAI Society in agreement with Springer. 
+  These versions have a content identical to the accepted versions, and only differ in the format and added watermark; the final published version of the proceedings is available on <a href="https://conferences.miccai.org/2024/en/PROCEEDINGS.html" target="_blank">SpringerLink</a>.
+  They are made available here to facilitate timely dissemination of research work, in line with the MICCAI Society's commitment to open science. Copyright and all rights therein are retained by authors or by other copyright holders. Anyone copying this material is expected to adhere to the terms and conditions invoked by each author's copyright.
+</i></h2></font>
+<br>
+</span>
+</div>
+<!--
+
+<nav class="header-nav">
+  <ul class="header-main-nav">
+    <h2> 
+    
+    <li class="header-main-nav-item">
+      <a href="/miccai-2024/"> 
+        
+          <b>List of Papers</b> |
+        
+      </a>
+    </li>
+      
+    <li class="header-main-nav-item">
+      <a href="/miccai-2024/categories"> 
+        
+          <b>Browse by Subject Areas</b> |
+        
+      </a>
+    </li>
+      
+    <li class="header-main-nav-item">
+      <a href="/miccai-2024/tags"> 
+        
+          <b>Author List</b> |
+        
+      </a>
+    </li>
+      
+    </h2>
+  </ul>
+</nav>
+-->
+      </header>
+      <main class="container-main">
+        <!-- <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script> -->
+
+<article class="container-post">
+  <div class="post-title">
+    <h1><span style="color:#1040a7"><b>3D Spine Shape Estimation from Single 2D DXA</b></span></h1>
+  </div>
+  
+  <div class="post-author print-post-author">
+    <span>Kitty K. Wong</span>
+  </div>
+  <div class="post-tags">
+    <!--<span>Author List</span>-->
+    <span><b> <h2>Author(s): </h2></b></span>
+    
+    <a href="/miccai-2024/tags#Bourigault, Emmanuelle"
+      class="post-category">
+      Bourigault, Emmanuelle
+    </a> |  
+    
+    <a href="/miccai-2024/tags#Jamaludin, Amir"
+      class="post-category">
+      Jamaludin, Amir
+    </a> |  
+    
+    <a href="/miccai-2024/tags#Zisserman, Andrew"
+      class="post-category">
+      Zisserman, Andrew
+    </a> |  
+    
+  </div>
+  
+
+  <hr>
+    
+   
+  <div class="post-content">
+    <!--
+    <div class="post-categories">
+      <h2><span style="color:#1040a7">Paper Topic(s):</span></h2> 
+      
+      
+      <a 
+        href="/miccai-2024/categories#Computer Aided Diagnosis, Treatment Response, and Outcome Prediction"
+        class="post-category">
+        Computer Aided Diagnosis, Treatment Response, and Outcome Prediction
+      </a>
+      
+      <a 
+        href="/miccai-2024/categories#Imaging-related Clinical Studies"
+        class="post-category">
+        Imaging-related Clinical Studies
+      </a>
+      
+    
+    </div>
+    <div class="post-tags">
+      
+      <h2><span style="color:#1040a7">Author(s):</span></h2> 
+      
+      <a href="/miccai-2024/tags#Bourigault, Emmanuelle"
+        class="post-tags">
+        Bourigault, Emmanuelle
+      </a> |  
+      
+      <a href="/miccai-2024/tags#Jamaludin, Amir"
+        class="post-tags">
+        Jamaludin, Amir
+      </a> |  
+      
+      <a href="/miccai-2024/tags#Zisserman, Andrew"
+        class="post-tags">
+        Zisserman, Andrew
+      </a> |  
+      
+    </div>
+  -->
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+
+    .sidenav {
+      width: 200px;
+      position: fixed;
+      z-index: 1;
+      top: 350px;
+      left: 0px;
+      background: #eee;
+      overflow-x: hidden;
+      padding: 0px 0;
+    }
+  
+    .sidenav a {
+      padding: 6px 8px 6px 16px;
+      text-decoration: none;
+      font-size: 16px;
+      color: #2196F3;
+      color: #FF4500;
+      display: block;
+    }
+  
+    .sidenav a:hover {
+      color: #064579;
+    }
+    </style>
+  </head>
+
+  <div class="sidenav">
+    <a href="#abstract-id">Paper Info</a>
+    <a href="#review-id">Reviews</a>
+    <a href="#authorFeedback-id">Author Feedback</a>
+    <a href="#metareview-id">Meta-Review</a>
+    <!-- <a href="#postrebuttal-id">Post-rebuttal Meta-Reviews</a> -->
+    <a href="">Back to top</a>
+    <hr style="height:1px;border-width:0;color:#FF4500;background-color:gray">
+    
+      <a href="/miccai-2024/"> 
+        
+          List of Papers
+        
+      </a>
+      
+      <a href="/miccai-2024/categories"> 
+        
+          Browse by Subject Areas
+        
+      </a>
+      
+      <a href="/miccai-2024/tags"> 
+        
+          Author List
+        
+      </a>
+      
+    
+
+  </div>
+
+    <h1 id="abstract-id">Abstract</h1>
+<p>Scoliosis is currently assessed solely on 2D lateral deviations, but recent studies have also revealed the importance of other imaging planes in understanding the deformation of the spine. Consequently, extracting the spinal geometry in 3D would help quantify these spinal deformations and aid diagnosis. 
+In this study, we propose an automated general framework to estimate the {\em 3D }spine shape from {\em 2D} DXA scans. We achieve this by explicitly predicting the sagittal view of the spine from the DXA scan. Using these two orthogonal projections of the spine (coronal in DXA, and sagittal from the prediction), we are able to describe the 3D shape of the spine.
+The prediction is learnt from over 30k paired images of DXA and MRI scans. We assess the performance of the method on a held out test set, and achieve high accuracy. Our code is available at \href{https://github.com/EmmanuelleB985/DXA_to_3D}{https://github.com/EmmanuelleB985/DXA-to-3D.}
+<br /><br /></p>
+
+<h1 id="link-id">Links to Paper and Supplementary Materials</h1>
+<p>Main Paper (Open Access Version): <a href="https://papers.miccai.org/miccai-2024/paper/1861_paper.pdf" target="_blank">https://papers.miccai.org/miccai-2024/paper/1861_paper.pdf</a></p>
+
+<p>SharedIt Link: <a href="https://rdcu.be/dV16Y" target="_blank">https://rdcu.be/dV16Y</a></p>
+
+<p>SpringerLink (DOI): <a href="https://doi.org/10.1007/978-3-031-72086-4_1" target="_blank">https://doi.org/10.1007/978-3-031-72086-4_1</a></p>
+
+<p>Supplementary Material: <a href="https://papers.miccai.org/miccai-2024/supp/1861_supp.zip" target="_blank">https://papers.miccai.org/miccai-2024/supp/1861_supp.zip</a>
+<br /><br /></p>
+
+<h1 id="code-id">Link to the Code Repository</h1>
+<p><a href="https://github.com/EmmanuelleB985/DXA-to-3D">https://github.com/EmmanuelleB985/DXA-to-3D</a>
+<br /><br /></p>
+
+<h1 id="dataset-id">Link to the Dataset(s)</h1>
+<p>KBiobank: whole body DXA images (field ID 20158) &amp; Dixon technique MRI (field ID 20201) <a href="https://www.ukbiobank.ac.uk/">https://www.ukbiobank.ac.uk/</a>
+<br /><br /></p>
+
+<h1 id="bibtex-id">BibTex</h1>
+<pre><code class="language-{verbatim}">@InProceedings{Bou_3D_MICCAI2024,
+Â  Â  Â  Â  author = { Bourigault, Emmanuelle and Jamaludin, Amir and Zisserman, Andrew},
+Â  Â  Â  Â  title = { { 3D Spine Shape Estimation from Single 2D DXA } },
+Â  Â  Â  Â  booktitle = {proceedings of Medical Image Computing and Computer Assisted Intervention -- MICCAI 2024},
+Â  Â  Â  Â  year = {2024},
+        publisher = {Springer Nature Switzerland},
+Â  Â  Â  Â  volume = {LNCS 15005},
+Â  Â  Â  Â  month = {October},
+ Â  Â  Â  Â page = {3 -- 13}
+}
+
+</code></pre>
+
+<hr />
+<h1 id="review-id">Reviews</h1>
+
+<h3 id="review-1">Review #1</h3>
+
+<ul>
+  <li><strong>Please describe the contribution of the paper</strong>
+    <blockquote>
+      <p>The authors proposed an automated framework to estimate the 3D spine shape from 2D DXA scans. This was achieved by explicitly predicting the sagittal view of the spine from the DXA scan. Using the coronal and sagittal projections of the spine, the authors were able to describe the 3D shape of the spine. The prediction was learnt from over 30k paired images of DXA and MRI scans.</p>
+    </blockquote>
+  </li>
+  <li><strong>Please list the main strengths of the paper; you should write about a novel formulation, an original way to use data, demonstration of clinical feasibility, a novel application, a particularly strong evaluation, or anything else that is a strong aspect of this work. Please provide details, for instance, if a method is novel, explain what aspect is novel and why this is interesting.</strong>
+    <blockquote>
+      <p>1) The paper was straight-forward. It presented the problem statement as well as the solutions in an easy to understand manner;
+2) The application itself seemed relatively novel. There were not a lot of works trying to predict 3D spine shapes from 2D DXA scans;</p>
+    </blockquote>
+  </li>
+  <li><strong>Please list the main weaknesses of the paper. Please provide details, for instance, if you think a method is not novel, explain why and provide a reference to prior work.</strong>
+    <blockquote>
+      <p>1) I am not sure I understood the clinical significance of this work. While it is obvious that 3D images contain more information compared to 2D projections, it is not clear that having detailed 3D information really adds value to the management/treatment of scoliosis patients;
+2) In my opinion, the authors should have conducted more experiments in order to prove that the proposed framework was indeed the optimal design. For example, for each view, why 3 curves were used instead of just one curve (the centerline of the spine)? Why was the specific network architecture chosen? How necessary was the dual alignment process?
+3) In the paper, there were a few places where the coronal and sagittal regressions were discussed as if they were 2 different models. But in other places I was under the impression there was only one network and coronal and sagittal regressions were learned together. The authors should perhaps edit the manuscript for better clarity.</p>
+    </blockquote>
+  </li>
+  <li><strong>Please rate the clarity and organization of this paper</strong>
+    <blockquote>
+      <p>Satisfactory</p>
+    </blockquote>
+  </li>
+  <li><strong>Please comment on the reproducibility of the paper. Please be aware that providing code and data is a plus, but not a requirement for acceptance.</strong>
+    <blockquote>
+      <p>The submission does not mention open access to source code or data but provides a clear and detailed description of the algorithm to ensure reproducibility.</p>
+    </blockquote>
+  </li>
+  <li><strong>Do you have any additional comments regarding the paperâs reproducibility?</strong>
+    <blockquote>
+      <p>My biggest confusion around the algorithm was whether coronal and sagittal regressions were learned together or separately. If this was cleared up, I think the algorithm would be reproducible for the most part.</p>
+    </blockquote>
+  </li>
+  <li><strong>Please provide detailed and constructive comments for the authors. Please also refer to our Reviewerâs guide on what makes a good review. Pay specific attention to the different assessment criteria for the different paper categories (MIC, CAI, Clinical Translation of Methodology, Health Equity): https://conferences.miccai.org/2024/en/REVIEWER-GUIDELINES.html</strong>
+    <blockquote>
+      <p>I would suggest the authors work on the following aspects in order to strengthen their paper:
+1) Provide more details to justify their algorithm would be valuable clinically. Currently only a few sentences were given in the introduction to describe how 3D spine shapes contained more information than 2D projections. While this was true, it felt like a generic statement and I would suggest having a clinician review and edit this part of the paper to add more clinical significance;
+2) Clarify the coronal and sagittal regression training process (see above comments);
+3) Provide more experimental evidence that the proposed algorithm was indeed better than other potential networks/frameworks;
+4) Provide more literature review for comparison purpose. Currently it is hard to compare this paper to other similar works because not enough literature comparison was provided. If this work was truly unique and nothing similar had been done before, the authors should make this point clear to the readers.</p>
+    </blockquote>
+  </li>
+  <li><strong>Rate the paper on a scale of 1-6, 6 being the strongest (6-4: accept; 3-1: reject). Please use the entire range of the distribution. Spreading the score helps create a distribution for decision-making</strong>
+    <blockquote>
+      <p>Reject â should be rejected, independent of rebuttal (2)</p>
+    </blockquote>
+  </li>
+  <li><strong>Please justify your recommendation. What were the major factors that led you to your overall score for this paper?</strong>
+    <blockquote>
+      <p>1) I donât see enough clinical significance. The authors needed to have stronger evidence that this algorithm would actually benefit patient care;
+2) The algorithm itself also did not seem to contain enough novelty;</p>
+    </blockquote>
+  </li>
+  <li><strong>Reviewer confidence</strong>
+    <blockquote>
+      <p>Very confident (4)</p>
+    </blockquote>
+  </li>
+  <li><strong>[Post rebuttal] After reading the authorâs rebuttal, state your overall opinion of the paper if it has been changed</strong>
+    <blockquote>
+      <p>Weak Accept â  could be accepted, dependent on rebuttal (4)</p>
+    </blockquote>
+  </li>
+  <li><strong>[Post rebuttal] Please justify your decision</strong>
+    <blockquote>
+      <p>The authorsâ answers to my previous concerns were satisfactory for the most part. Although I am still concerned about the clinical usefulness of the paper, I am ok with accepting the paper given the other merits.</p>
+    </blockquote>
+  </li>
+</ul>
+
+<p><br /><br /></p>
+
+<h3 id="review-2">Review #2</h3>
+
+<ul>
+  <li><strong>Please describe the contribution of the paper</strong>
+    <blockquote>
+      <p>The paper introduces a method for spine curve regression from whole-body DEXA scans. Particular focus of this study is on regressing the curve in the complementary (sagittal) projection. For that, the method employs approximately paired MRI scans to derive the reference spine curves, and predicts them using deep learning-based model. Several models are analyzed - CNN, Transformer, and a hybrid one. The performance is quantified and compared to DEXA-to-DEXA and DEXA-to-corMRI settings. The results may inform future studies on clinical applicability of 2D projection-based DEXA imaging in scoliosis diagnostics.</p>
+    </blockquote>
+  </li>
+  <li><strong>Please list the main strengths of the paper; you should write about a novel formulation, an original way to use data, demonstration of clinical feasibility, a novel application, a particularly strong evaluation, or anything else that is a strong aspect of this work. Please provide details, for instance, if a method is novel, explain what aspect is novel and why this is interesting.</strong>
+    <blockquote>
+      <ol>
+        <li>Well-writen and well-structured paper that is dense in details. Sufficient overview of the relevant prior art.</li>
+        <li>Novel application of the data, with a potential to expand clinical use of whole-body DEXA scans.</li>
+        <li>Principled and technically sound implementation of the method.</li>
+        <li>Considerable sample size.</li>
+      </ol>
+    </blockquote>
+  </li>
+  <li><strong>Please list the main weaknesses of the paper. Please provide details, for instance, if you think a method is not novel, explain why and provide a reference to prior work.</strong>
+    <blockquote>
+      <ol>
+        <li>The presented method can be seen as an incremental development, considering the prior works on multi-modal scan alignment, single-view spine curve regression, spine segmentation from DEXA/MRI (generally, well-cited). Several of these major components, which are at the core the present study, have been previously published.</li>
+        <li>While the study data is presumably multi-center, robustness of the method when used with external data is not clarified.</li>
+        <li>The paper looks somewhat incomplete, since the accuracy of the predicted curves is not analyzed in 3D (except for the plot in Supplementary). This is unexpected, since this is the exact problem stated by the authors - âscoliosis â¦ is essentially a 3D disorder but typically the focus is on just the 2D lateral shift of the spineâ - and visualized in Figure 1.</li>
+      </ol>
+    </blockquote>
+  </li>
+  <li><strong>Please rate the clarity and organization of this paper</strong>
+    <blockquote>
+      <p>Very Good</p>
+    </blockquote>
+  </li>
+  <li><strong>Please comment on the reproducibility of the paper. Please be aware that providing code and data is a plus, but not a requirement for acceptance.</strong>
+    <blockquote>
+      <p>The submission does not mention open access to source code or data but provides a clear and detailed description of the algorithm to ensure reproducibility.</p>
+    </blockquote>
+  </li>
+  <li><strong>Do you have any additional comments regarding the paperâs reproducibility?</strong>
+    <blockquote>
+      <ol>
+        <li>Missing details on how the data was standardized - pixel spacing DEXA and MRI, fixed number of slices with spine points along the superoinferior direction.</li>
+        <li>Unclear how the MRI spine masks were projected to obtain the spine curves.</li>
+        <li>The value of lambda term from the loss function is not provided.</li>
+        <li>Unclear how 5 folds from the cross-validation procedure were used.</li>
+      </ol>
+    </blockquote>
+  </li>
+  <li><strong>Please provide detailed and constructive comments for the authors. Please also refer to our Reviewerâs guide on what makes a good review. Pay specific attention to the different assessment criteria for the different paper categories (MIC, CAI, Clinical Translation of Methodology, Health Equity): https://conferences.miccai.org/2024/en/REVIEWER-GUIDELINES.html</strong>
+    <blockquote>
+      <ol>
+        <li>âpaired imaging set of DXA scans with corresponding MRIs taken at roughly the same timeâ. Please, say more specifically what âroughly the same timeâ means.</li>
+        <li>Related Work: âThese methods require a relatively high number of 2D views and camera calibration which is hard to achieve for reconstructing 3D spine in clinics.â. This justification does not sound relevant. First, for the purpose of this study, two somewhat orthogonal DEXA scans would have been sufficient. Second, clinical medical imaging devices are generally very well calibrated and undergo regular maintenance. Please, rething the logic and rephrase.</li>
+        <li>Connected to the above, the paper should briefly say why acquiring two DEXA scans is an unfavourable option.</li>
+        <li>Since both imaging modalities in the study are acquired in lying non-weight-bearing position, this affects how the spine curvature and, thus, scoliosis are observed. Please, briefly discuss the limitations of using non-weight-bearing images and add relevant references.</li>
+        <li>As it currently reads, the metrics in Table 1 are derived in 2D. Measuring them in 3D, following the procedure from Figure 1, would be highly appropriate in the context of this work. Consider summarizing the results from Supplemental Figure 1 plot (lower) numerically and adding them into the main text of the paper.</li>
+      </ol>
+
+      <p>Minor:</p>
+      <ol>
+        <li>Figure 5, Supplemental Figure 1 (upper) - Consider cropping the non-informative dark regions in the columns and zooming on the informative areas.</li>
+        <li>Please, state explicitly what are the units for MAE - pixels?.</li>
+        <li>Table 1: Use fixed precision, at least, within each block of the results.</li>
+        <li>Consider adding an angle indicator into every frame of the Supplementary videos. That would allow easier visual comparison of the spines across the modalities.</li>
+      </ol>
+    </blockquote>
+  </li>
+  <li><strong>Rate the paper on a scale of 1-6, 6 being the strongest (6-4: accept; 3-1: reject). Please use the entire range of the distribution. Spreading the score helps create a distribution for decision-making</strong>
+    <blockquote>
+      <p>Weak Accept â could be accepted, dependent on rebuttal (4)</p>
+    </blockquote>
+  </li>
+  <li><strong>Please justify your recommendation. What were the major factors that led you to your overall score for this paper?</strong>
+    <blockquote>
+      <ul>
+        <li>Clear, scientifically and technically sound paper</li>
+        <li>Novel use of the data</li>
+        <li>Large sample size</li>
+        <li>Convincing results</li>
+        <li>Rather incremental nature of the study</li>
+        <li>Several small reproducibility issues</li>
+        <li>Experimental section is somewhat incomplete</li>
+      </ul>
+
+    </blockquote>
+  </li>
+  <li><strong>Reviewer confidence</strong>
+    <blockquote>
+      <p>Confident but not absolutely certain (3)</p>
+    </blockquote>
+  </li>
+  <li><strong>[Post rebuttal] After reading the authorâs rebuttal, state your overall opinion of the paper if it has been changed</strong>
+    <blockquote>
+      <p>Accept â should be accepted, independent of rebuttal (5)</p>
+    </blockquote>
+  </li>
+  <li><strong>[Post rebuttal] Please justify your decision</strong>
+    <blockquote>
+      <p>Given the feedback from other reviewers, the novel use of data presented in the study may be more significant than I initially assessed. Additionally, the authors have promised to present the 3D performance indicators, as well as to address my minor remarks.</p>
+    </blockquote>
+  </li>
+</ul>
+
+<p><br /><br /></p>
+
+<h3 id="review-3">Review #3</h3>
+
+<ul>
+  <li><strong>Please describe the contribution of the paper</strong>
+    <blockquote>
+      <p>In this paper, the authors propose a deep learning method for the modeling of 3D spine shapes by exploiting the 2D DXA images. The estimation is done by performing regression to predict the sagittal view and combining it with the coronal view. The estimation of the 3D shape from the 2D image is a very interesting topic. Additional details on the reasons behind the modelâs ability to predict this view from the 2D image would enhance the presentation. However, both quantitative and qualitative results concerning the prediction of the spine curves have been presented adequately.</p>
+    </blockquote>
+  </li>
+  <li><strong>Please list the main strengths of the paper; you should write about a novel formulation, an original way to use data, demonstration of clinical feasibility, a novel application, a particularly strong evaluation, or anything else that is a strong aspect of this work. Please provide details, for instance, if a method is novel, explain what aspect is novel and why this is interesting.</strong>
+    <blockquote>
+      <p>The proposed method can effectively calculate the points required for the views of the spine. Both qualitative and quantitative results are presented to support the methodâs validation.
+Potential usage for supporting scoliosis screening and quantification.</p>
+    </blockquote>
+  </li>
+  <li><strong>Please list the main weaknesses of the paper. Please provide details, for instance, if you think a method is not novel, explain why and provide a reference to prior work.</strong>
+    <blockquote>
+      <p>The part of the methodology concerning image alignment is not adequately described as it is mentioned in the Comments section.
+The Discussion section is limited. The reasons behind the modelâs ability to reconstruct a 3D model from a 2D image where the depth is not represented could be elaborated.</p>
+    </blockquote>
+  </li>
+  <li><strong>Please rate the clarity and organization of this paper</strong>
+    <blockquote>
+      <p>Very Good</p>
+    </blockquote>
+  </li>
+  <li><strong>Please comment on the reproducibility of the paper. Please be aware that providing code and data is a plus, but not a requirement for acceptance.</strong>
+    <blockquote>
+      <p>The submission does not provide sufficient information for reproducibility.</p>
+    </blockquote>
+  </li>
+  <li><strong>Do you have any additional comments regarding the paperâs reproducibility?</strong>
+    <blockquote>
+      <p>Adding information about the alignment steps would enhance reproducibility.</p>
+    </blockquote>
+  </li>
+  <li><strong>Please provide detailed and constructive comments for the authors. Please also refer to our Reviewerâs guide on what makes a good review. Pay specific attention to the different assessment criteria for the different paper categories (MIC, CAI, Clinical Translation of Methodology, Health Equity): https://conferences.miccai.org/2024/en/REVIEWER-GUIDELINES.html</strong>
+    <blockquote>
+      <p>The authors should provide additional related works on the reconstruction of the 3D spine from the 2D DXA such as:
+M. LÃ³pez Picazo et al., â3-D Subject-Specific Shape and Density Estimation of the Lumbar Spine From a Single Anteroposterior DXA Image Including Assessment of Cortical and Trabecular Bone,â in IEEE Transactions on Medical Imaging, vol. 37, no. 12, pp. 2651-2662, Dec. 2018, doi: 10.1109/TMI.2018.2845909.</p>
+
+      <p>B. Aubert, C. Vazquez, T. Cresson, S. Parent and J. A. de Guise, âToward Automated 3D Spine Reconstruction from Biplanar Radiographs Using CNN for Statistical Spine Model Fitting,â in IEEE Transactions on Medical Imaging, vol. 38, no. 12, pp. 2796-2806, Dec. 2019, doi: 10.1109/TMI.2019.2914400.</p>
+
+      <p>In the alignment part of the methodology, the authors mentioned two techniques, a rough and a finer step. Providing additional details apart from the citation would make the description of the overall method clearer. In this regard, the alignment steps should be described more concisely including the two steps which both use translation-rotation transforms. The reasons behind the usage of two alignments with the same types of transforms should be explained.
+Please enhance the discussion section. Additional clarifications about the modelâs mechanism that achieves this reconstruction would give more insight into the modelâs ability to learn to reconstruct real 3D shapes against using spurious correlations and producing similar/or limited reconstructions.
+Future work
+Calculating the correlation between the Cobb angle calculated from the 2D DXA and shape metrics from the 3D reconstructed image would enhance the proposed methodâs application to the clinical workflow for scoliosis screening.</p>
+    </blockquote>
+  </li>
+  <li><strong>Rate the paper on a scale of 1-6, 6 being the strongest (6-4: accept; 3-1: reject). Please use the entire range of the distribution. Spreading the score helps create a distribution for decision-making</strong>
+    <blockquote>
+      <p>Weak Accept â could be accepted, dependent on rebuttal (4)</p>
+    </blockquote>
+  </li>
+  <li><strong>Please justify your recommendation. What were the major factors that led you to your overall score for this paper?</strong>
+    <blockquote>
+      <p>Reconstructing the 3D spine from the 2D DXA images is an interesting topic with application to the clinical workflow. The authors utilized a deep learning method based on ResNet and Transformers to predict views and combine them for the 3D shape. Providing some additional details to give us more insight into the modelâs mechanism could be of additive value for the modelâs applicability and strengths.</p>
+    </blockquote>
+  </li>
+  <li><strong>Reviewer confidence</strong>
+    <blockquote>
+      <p>Confident but not absolutely certain (3)</p>
+    </blockquote>
+  </li>
+  <li><strong>[Post rebuttal] After reading the authorâs rebuttal, state your overall opinion of the paper if it has been changed</strong>
+    <blockquote>
+      <p>Accept â should be accepted, independent of rebuttal (5)</p>
+    </blockquote>
+  </li>
+  <li><strong>[Post rebuttal] Please justify your decision</strong>
+    <blockquote>
+      <p>Pros
+-Overall, well-written with good organizational structure.
+-The clinical application of reconstructing the 3D spine from the 2D DXA images is less studied and could be an interesting topic.
+-The authors agreed to add related works to enhance literature report.
+-A large dataset is used for the experiments
+Cons</p>
+      <ul>
+        <li>Limited description of the alignment procedure that can affect reproducibility.</li>
+      </ul>
+    </blockquote>
+  </li>
+</ul>
+
+<p><br /><br /></p>
+
+<hr />
+<h1 id="authorFeedback-id">Author Feedback</h1>
+<blockquote>
+  <p>We thank the reviewers for their valuable comments, time and effort. We thank them for recognising the convincing results at a large scale and the novel use of the data.
+R1-W1: âClinical significance - Does detailed 3D information really add value to the management/treatment of scoliosis patients?â  The analysis of spine in 3D is relatively new but the introduction of EOS scanners has shown that 3D is valuable for clinical management of patients. Crucially only in 3D, the effect of brace surgical treatment can be better evaluated [1] which impacts a patientâs overall response to treatment.
+R1-W2a: âMore experiments in order to prove that the proposed framework was indeed the optimal designâ. We explored several architectures and found that a lightweight transformer with ResNet backbone gave the best pixel-wise regression performance (Table 1).  We will include a discussion of the models investigated in the final version. In line with our work, [2] showed that a lightweight transformer model using significantly less parameters also surpasses CNN-based and Vision Transformer (ViT) models on the Synapse dataset, SegPC, and ISIC 2017 dataset.
+R1-W2b: âWhy 3 curves used instead of just one?â. We employ this design choice to predict spine masks. This is important as scoliosis is known to involve deformities due to vertebral axial rotation [3]. This will enable future work into understanding the effect of compression in scoliosis and potentially lead to tailored physiotherapeutic treatment.</p>
+
+  <p>R1-W3: âAre coronal and sagittal regressions learned together or separately?â  There is a single model, with two separate heads: a coronal and a sagittal head that produce 3 curves each. We agree that showing regression curves results in Table 1 separately for the coronal and sagittal plane could give a misleading impression. We will edit the paper to rectify this.</p>
+
+  <p>R3-W1: âIncremental nature of the workâ. As far as we know, we are the first to regress 3D patient-specific spine shapes from 2D AP DXA. The main technical advance lies in the 2 separate orthogonal planes (sagittal and coronal) curve regression of the spine from a 2D image. We then show through these curves, we can recover 3D geometry of the spine which is beneficial for scoliosis.
+R3-W2: âRobustness of the method when used with external data is not clarifiedâ. Unfortunately, we do not have access to an external paired dataset of whole-body MRI and DXA scans. From experience, little to no adaptation would be needed in terms of data pre-processing. We will make our code publicly available with documentation to test on external data.
+R3-W3: âThe paper looks somewhat incomplete, since the accuracy of the predicted curves is not analyzed in 3D (except for the plot in Supplementary).â This would be a good addition. We have labels for 3D spine masks on the MRI, and will add the 3D evaluation to the final version of the paper.
+R4:âLiterature comparisonâ. We will cite the two papers. Note, however, that we use direct regression while the references fit 3D shape models.
+R1&amp;R4 :âDual Alignmentâ. This two-stage alignment procedure is crucial, as a significant proportion of the MRI and DXA do not have spines aligned after the first global alignment stage. Note, alignments often proceed iteratively, even under the  same transformation. The rough stage is the global alignment of MRI to DXA, and the second finer stage is the MRI spine to DXA spine alignment using spine-labels, this is explained in the last 2 paragraphs of section 2.2.</p>
+
+  <p>We will address all the minor points listed in the reviews in the final version.</p>
+
+  <p>[1]. Courvoisier et al. EOS 3D Imaging: assessing the impact of brace treatment in adolescent idiopathic scoliosis. Expert Review of Medical Devices, 11(1), 2014. 
+[2] Heidari et al. Hiformer: Hierarchical multi-scale representations using transformers for medical image segmentation. WACV, 2023.
+[3] IllÃ©s et al. The third dimension of scoliosis: The forgotten axial plane.OTSR, 2019.</p>
+</blockquote>
+
+<p><br /><br /></p>
+
+<hr />
+<h1 id="metareview-id">Meta-Review</h1>
+
+<h2 id="meta-review-1">Meta-review #1</h2>
+<ul>
+  <li><strong>After you have reviewed the rebuttal and updated reviews, please provide your recommendation based on all reviews and the authorsâ rebuttal.</strong>
+    <blockquote>
+      <p>Accept</p>
+    </blockquote>
+  </li>
+  <li><strong>Please justify your recommendation. You may optionally write justifications for âacceptsâ, but are expected to write a justification for ârejectsâ</strong>
+    <blockquote>
+      <p>N/A</p>
+    </blockquote>
+  </li>
+  <li><strong>What is the rank of this paper among all your rebuttal papers? Use a number between 1/n (best paper in your stack) and n/n (worst paper in your stack of n papers). If this paper is among the bottom 30% of your stack, feel free to use NR (not ranked).</strong>
+    <blockquote>
+      <p>N/A</p>
+    </blockquote>
+  </li>
+</ul>
+
+<p><br /><br /></p>
+<h2 id="meta-review-2">Meta-review #2</h2>
+<ul>
+  <li><strong>After you have reviewed the rebuttal and updated reviews, please provide your recommendation based on all reviews and the authorsâ rebuttal.</strong>
+    <blockquote>
+      <p>Accept</p>
+    </blockquote>
+  </li>
+  <li><strong>Please justify your recommendation. You may optionally write justifications for âacceptsâ, but are expected to write a justification for ârejectsâ</strong>
+    <blockquote>
+      <p>N/A</p>
+    </blockquote>
+  </li>
+  <li><strong>What is the rank of this paper among all your rebuttal papers? Use a number between 1/n (best paper in your stack) and n/n (worst paper in your stack of n papers). If this paper is among the bottom 30% of your stack, feel free to use NR (not ranked).</strong>
+    <blockquote>
+      <p>N/A</p>
+    </blockquote>
+  </li>
+</ul>
+
+<p><br /><br />
+<a href=""><b>back to top</b></a></p>
+
+<hr />
+
+
+  </div>
+
+  <div class="post-info">
+    <!--
+    <div class="post-date">
+      Poster presentation date:  
+      2024-09-01
+      -->
+      <!--
+      
+        ,
+        updated at 
+        2024-09-01
+      
+      .
+      
+    </div>
+    -->
+    <!--
+    
+    <div class="post-author">
+      Author: Kitty K. Wong
+    </div>
+    
+    -->
+    <div class="post-categories">
+      <span><b>Topic(s): </b></span>
+      
+      <a 
+        href="/miccai-2024/categories#Computer Aided Diagnosis, Treatment Response, and Outcome Prediction"
+        class="post-category">
+        Computer Aided Diagnosis, Treatment Response, and Outcome Prediction
+      </a> |
+      
+      <a 
+        href="/miccai-2024/categories#Imaging-related Clinical Studies"
+        class="post-category">
+        Imaging-related Clinical Studies
+      </a> |
+      
+    </div>
+    <div class="post-tags">
+      <!--<span>Author List</span>-->
+      <span><b> Author(s): </b></span>
+      
+      <a href="/miccai-2024/tags#Bourigault, Emmanuelle"
+        class="post-category">
+        Bourigault, Emmanuelle
+      </a> |  
+      
+      <a href="/miccai-2024/tags#Jamaludin, Amir"
+        class="post-category">
+        Jamaludin, Amir
+      </a> |  
+      
+      <a href="/miccai-2024/tags#Zisserman, Andrew"
+        class="post-category">
+        Zisserman, Andrew
+      </a> |  
+      
+    </div>
+    <div class="post-other">
+      
+      <div>
+        <span><b>
+          Next paper: 
+        </b>
+        </span>
+        <a href="/miccai-2024/002-Paper1908.html">
+          3D Vessel Graph Generation Using Denoising Diffusion
+        </a>
+      </div>
+      
+      
+    </div>
+    
+  </div>
+</article>
+
+      </main>
+      <footer class="container-footer">
+        <div class="footer-copyright">
+  <span class="footer-copyright-text float-left">
+    Copyright &copy; 2024. The MICCAI Society
+  </span>
+  
+  <span class="footer-copyright-text float-right">
+    MICCAI 2024 Open Access</a>.
+  </span>
+
+</div>
+
+
+      </footer>
+    </div>
+  </body>
+</html>

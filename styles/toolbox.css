@@ -1,0 +1,15 @@
+/* styles/toolbox.css */
+
+QLabel {
+    background-color: white;
+    padding: 2px;
+}
+
+QLabel:hover {
+    background-color: #d0d0d0;
+    border: 1px solid #666;
+}
+
+QLabel[selected="true"] {
+    background-color: rgba(0, 0, 0, 50);
+}
